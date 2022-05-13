@@ -29,7 +29,7 @@ const Nilai = ({route, navigation}) => {
           setUsers(res.val());
         }
       });
-  }, [uid]);
+  }, [angkatan, uid]);
 
   const back = () => {
     navigation.navigate('Menu', {uid: uid, angkatan: angkatan});
@@ -46,11 +46,13 @@ const Nilai = ({route, navigation}) => {
           <Text style={styles.title}>Semester I</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => Linking.openURL(users.linksem1)}>
+            onPress={() => Linking.openURL(users.linkkelas1semsterganjil)}>
             <Text style={styles.textt}>Buka</Text>
           </TouchableOpacity>
           <View style={styles.qr}>
-            {!show ? <QRCode value={users.linksem1} size={200} /> : null}
+            {!show ? (
+              <QRCode value={users.linkkelas1semesterganjil} size={200} />
+            ) : null}
             <TouchableOpacity style={styles.btn} onPress={() => setShow(!show)}>
               <Text style={styles.textt}>QR Code</Text>
             </TouchableOpacity>
@@ -58,11 +60,13 @@ const Nilai = ({route, navigation}) => {
           <Text style={styles.title}>Semester II</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => Linking.openURL(users.linksem2)}>
+            onPress={() => Linking.openURL(users.linkkelas1semestergenap)}>
             <Text style={styles.textt}>Buka</Text>
           </TouchableOpacity>
           <View style={styles.qr}>
-            {!show2 ? <QRCode value={users.linksem2} size={200} /> : null}
+            {!show2 ? (
+              <QRCode value={users.linkkelas1semstergenap} size={200} />
+            ) : null}
             <TouchableOpacity
               style={styles.btn}
               onPress={() => setShow2(!show2)}>
@@ -72,7 +76,7 @@ const Nilai = ({route, navigation}) => {
           <Text style={styles.title}>Semester III</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => Linking.openURL(users.linksem3)}>
+            onPress={() => Linking.openURL(users.linkkelas2semsterganjil)}>
             <Text style={styles.textt}>Buka</Text>
           </TouchableOpacity>
           <View style={styles.qr}>
@@ -86,11 +90,13 @@ const Nilai = ({route, navigation}) => {
           <Text style={styles.title}>Semester IV</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => Linking.openURL(users.linksem4)}>
+            onPress={() => Linking.openURL(users.linkkelas2semstergenap)}>
             <Text style={styles.textt}>Buka</Text>
           </TouchableOpacity>
           <View style={styles.qr}>
-            {!show4 ? <QRCode value={users.linksem4} size={200} /> : null}
+            {!show4 ? (
+              <QRCode value={users.linkkelas2semestergenap} size={200} />
+            ) : null}
             <TouchableOpacity
               style={styles.btn}
               onPress={() => setShow4(!show4)}>
@@ -100,11 +106,13 @@ const Nilai = ({route, navigation}) => {
           <Text style={styles.title}>Semester V</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => Linking.openURL(users.linksem5)}>
+            onPress={() => Linking.openURL(users.linkkelas3semsterganjil)}>
             <Text style={styles.textt}>Buka</Text>
           </TouchableOpacity>
           <View style={styles.qr}>
-            {!show5 ? <QRCode value={users.linksem5} size={200} /> : null}
+            {!show5 ? (
+              <QRCode value={users.linkkelas3semesterganjil} size={200} />
+            ) : null}
             <TouchableOpacity
               style={styles.btn}
               onPress={() => setShow5(!show5)}>
@@ -114,11 +122,13 @@ const Nilai = ({route, navigation}) => {
           <Text style={styles.title}>Semester VI</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => Linking.openURL(users.linksem6)}>
+            onPress={() => Linking.openURL(users.linkkelas3semstergenap)}>
             <Text style={styles.textt}>Buka</Text>
           </TouchableOpacity>
           <View style={styles.qr}>
-            {!show6 ? <QRCode value={users.linksem6} size={200} /> : null}
+            {!show6 ? (
+              <QRCode value={users.linkkelas3semstergenap} size={200} />
+            ) : null}
             <TouchableOpacity
               style={styles.btn}
               onPress={() => setShow6(!show6)}>
@@ -128,9 +138,13 @@ const Nilai = ({route, navigation}) => {
           <View style={styles.gap}>
             <BottomNavigation
               Homes={<Home />}
-              onPressHome={() => navigation.navigate('Menu', {uid: uid})}
+              onPressHome={() =>
+                navigation.navigate('Menu', {uid: uid, angkatan: angkatan})
+              }
               Profiles={<User />}
-              onPressProfile={() => navigation.navigate('Profile', {uid: uid})}
+              onPressProfile={() =>
+                navigation.navigate('Profile', {uid: uid, angkatan: angkatan})
+              }
             />
           </View>
         </View>
